@@ -1,0 +1,38 @@
+### Base URL
+@baseUrl = http://localhost:5133/api/task
+
+### Get all products
+GET {{baseUrl}}
+
+###
+
+### Get taks by ID
+GET {{baseUrl}}/1
+
+###
+
+### Create a new task
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "name": "study english",
+  "description": "teste"
+}
+
+###
+
+### Update task
+PUT {{baseUrl}}/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Mechanical Keyboard",
+  "description": "teste"
+}
+
+###
+
+### Delete task
+DELETE {{baseUrl}}/1
