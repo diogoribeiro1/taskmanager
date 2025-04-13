@@ -42,3 +42,4 @@
 /Users/diogoribeiro/code/TaskManager/obj/Debug/net9.0/TaskManager.pdb
 /Users/diogoribeiro/code/TaskManager/obj/Debug/net9.0/TaskManager.genruntimeconfig.cache
 /Users/diogoribeiro/code/TaskManager/obj/Debug/net9.0/ref/TaskManager.dll
+/Users/diogoribeiro/code/TaskManager/obj/Debug/net9.0/TaskManager.sourcelink.json

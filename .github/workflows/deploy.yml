@@ -23,12 +23,19 @@ jobs:
           SSH_HOST: ${{ secrets.VPS_HOST }}
           APP_NAME: ${{ secrets.APP_NAME }}
         run: |
-          sshpass -p "$SSH_PASS" ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST <<EOF
+          sshpass -p "$SSH_PASS" ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST <<'EOF'
             set -e
-            cd ~/TaskManager || git clone https://github.com/${{ github.repository }}.git TaskManager && cd TaskManager
+
+            cd ~
+            if [ ! -d "TaskManager" ]; then
+              git clone https://github.com/${{ github.repository }}.git TaskManager
+            fi
+
+            cd TaskManager
             git pull origin main
+
             docker build -t $APP_NAME .
             docker stop $APP_NAME || true
             docker rm $APP_NAME || true
-            docker run -d --name $APP_NAME -p 80:80 $APP_NAME
+            docker run -d --restart unless-stopped --name $APP_NAME -p 80:80 $APP_NAME
           EOF
