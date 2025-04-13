@@ -34,8 +34,13 @@ jobs:
             cd TaskManager
             git pull origin main
 
-            docker build -t $APP_NAME .
-            docker stop $APP_NAME || true
-            docker rm $APP_NAME || true
-            docker run -d --restart unless-stopped --name $APP_NAME -p 80:80 $APP_NAME
+            echo "🛠️ Building Docker image..."
+            docker build -t "$APP_NAME" .
+
+            echo "🧹 Stopping previous container (if exists)..."
+            docker stop "$APP_NAME" || true
+            docker rm "$APP_NAME" || true
+
+            echo "🚀 Running container..."
+            docker run -d --restart unless-stopped --name "$APP_NAME" -p 80:80 "$APP_NAME"
           EOF
