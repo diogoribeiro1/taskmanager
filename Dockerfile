@@ -22,4 +22,4 @@ EXPOSE 80
 EXPOSE 443
 
 # Run the app
-ENTRYPOINT ["dotnet", "WebApplication1.dll"]
+ENTRYPOINT ["dotnet", "TaskManager.dll"]
