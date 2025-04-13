@@ -34,5 +34,5 @@ jobs:
             docker build -t '${{ secrets.APP_NAME }}' .
             docker stop '${{ secrets.APP_NAME }}' || true
             docker rm '${{ secrets.APP_NAME }}' || true
-            docker run -d --restart unless-stopped --name '${{ secrets.APP_NAME }}' -p 8080:80 '${{ secrets.APP_NAME }}'
+            docker run -d --restart unless-stopped --name '${{ secrets.APP_NAME }}' -p 8080:8080 '${{ secrets.APP_NAME }}'
           "
